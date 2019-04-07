@@ -5,7 +5,7 @@ import gi
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gdk, Gio
 
-# -- use the MPL API directly --
+# -- sometimes we need to use the MPL API directly --
 import matplotlib
 matplotlib.use("Gtk3Agg") # MacOSX, Gtk3Cairo, Gtk3Agg (fastest)
 from matplotlib.figure import Figure
@@ -20,34 +20,31 @@ def main():
     Python Gtk3+ Tutorial
     - https://python-gtk-3-tutorial.readthedocs.io/en/latest/introduction.html
 
+    PyGObject API (very useful function lookup)
+    - https://lazka.github.io/pgi-docs/
+
     Matplotlib integration:
     - https://matplotlib.org/gallery/index.html#embedding-matplotlib-in-graphical-user-interfaces
     - https://matplotlib.org/api/index.html
 
     Prerequisites:
     - brew install pygobject3 gtk+3
+    - brew install gtk-mac-integration
+    - brew install gtk-chtheme
+    - brew install gnome-themes-standard
     """
-
+    # -- attempts to set the theme --
+    # note: themes are supposed to be set by the user.  so we need GTK
+    # to load the appropriate theme to our OS, not just hardcode it.
+    # https://stackoverflow.com/questions/52491412/unable-to-apply-custom-theme-to-pygobject-application
     # settings = Gtk.Settings.get_default()
-    # settings.set_property("gtk-theme-name", "Zukitwo")
-    # settings.set_property("gtk-application-prefer-dark-theme", True)
+    # settings.set_property("gtk-theme-name", "Numix")
+    # settings.set_property("gtk-application-prefer-dark-theme", False)
     # pprint(settings.list_properties()) # print all properties
-    # for val in settings.list_properties():
-    #     if "theme" in str(val):
-    #         print(val)
+    # css = Gtk.CssProvider.load_from_file("dark.css")
+    # exit()
 
-    css = Gtk.CssProvider.load_from_file("dark.css")
-
-    # css_provider = Gtk.CssProvider()
-    # mysheet = Gio.File.new_for_path("dark.css")
-    # css_provider.load_from_file(mysheet)
-    screen = Gdk.Screen.get_default()
-    style_context = window.get_style_context()
-    style_context.add_provider_for_screen(screen, css_provider,
-                                          Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION)
-
-    exit()
-
+    # -- declare some different window types and run them
     # win = SimpleWindow()
     # win = PanZoomWindow()
     # win = ScrolledWindow()
