@@ -1,35 +1,36 @@
 #!/usr/bin/env python3
-"""
-# dcage.py, v1.0
-# This code is licensed under the MIT License (MIT).
-# Copyright (c) 2019, Clinton G. Wiseman <wisecg@uw.edu>
-"""
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton,
+from PyQt5.QtWidgets import QWidget, QAction, QTabWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
 
 
 def main():
-    """
-    convention: let's try using the D prefix on our objects
-    """
     app = QApplication(sys.argv)
-    ex = DCAGE()
+    ex = App()
     sys.exit(app.exec_())
 
 
-class DCAGE(QMainWindow):
+class App(QMainWindow):
+
     def __init__(self):
         super().__init__()
-        self.setWindowTitle('DCAGE: Data acquisition for CAGE')
-        self.setGeometry(0, 0, 800, 600)
-        self.ctr_widget = DTabWindow(self)
-        self.setCentralWidget(self.ctr_widget)
+        self.title = 'PyQt5 tabs - pythonspot.com'
+        self.left = 0
+        self.top = 0
+        self.width = 800
+        self.height = 600
+        self.setWindowTitle(self.title)
+        self.setGeometry(self.left, self.top, self.width, self.height)
+
+        self.table_widget = MyTableWidget(self)
+        self.setCentralWidget(self.table_widget)
+
         self.show()
 
 
-class DTabWindow(QWidget):
+class MyTableWidget(QWidget):
 
     def __init__(self, parent):
         super(QWidget, self).__init__(parent)
@@ -58,12 +59,9 @@ class DTabWindow(QWidget):
     @pyqtSlot()
     def on_click(self):
         print("\n")
-        for currentQTableWidgetItem in self.ctr_widget.selectedItems():
+        for currentQTableWidgetItem in self.tableWidget.selectedItems():
             print(currentQTableWidgetItem.row(), currentQTableWidgetItem.column(), currentQTableWidgetItem.text())
 
 
-
-if __name__=="__main__":
+if __name__ == '__main__':
     main()
-
-

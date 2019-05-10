@@ -47,8 +47,8 @@ def main():
     # -- declare some different window types and run them
     # win = SimpleWindow()
     # win = PanZoomWindow()
-    # win = ScrolledWindow()
-    win = DataManager()
+    win = ScrolledWindow()
+    # win = DataManager()
     # win = PyplotWindow()
 
     # display the window
