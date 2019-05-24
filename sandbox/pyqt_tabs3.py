@@ -6,6 +6,13 @@ from PyQt5.QtGui import QIcon
 
 
 class TabDialog(QDialog):
+    """
+    todo: be able to reorder these tabs, and pop them out into new windows,
+    like we do in `pyqt_tabs.py`.
+    https://stackoverflow.com/questions/21276969/pyqt-reorder-tabs-in-qtabwidget
+    """
+
+
     def __init__(self):
         super().__init__()
 
