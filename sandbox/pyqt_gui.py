@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from PyQt5 import QtGui  # (the example applies equally well to PySide)
 import pyqtgraph as pg
 

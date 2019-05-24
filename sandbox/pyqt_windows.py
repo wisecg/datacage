@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton,
+from PyQt5.QtWidgets import QMainWindow, QApplication, QPushButton
 from PyQt5.QtWidgets import QWidget, QAction, QTabWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
